@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  app_proxy:
+    environment:
+      APP_HOST: homelab-shelfmark_server_1
+      APP_PORT: 8084
+    container_name: homelab-shelfmark_app_proxy_1
+  server:
+    image: ghcr.io/calibrain/shelfmark:v1.3.15
+    container_name: homelab-shelfmark_server_1
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: UTC
+      SEARCH_MODE: universal
+      PROWLARR_ENABLED: "true"
+      PROWLARR_URL: http://prowlarr_server_1:9696
+      PROWLARR_TORRENT_CLIENT: transmission
+      TRANSMISSION_URL: http://transmission_server_1:9091
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/config
+      - ${APP_DATA_DIR}/data/books:/books
+      # Must match Transmission's own download path exactly so Shelfmark can
+      # see and import finished torrents.
+      - ${UMBREL_ROOT}/home/Downloads:/downloads
+    restart: on-failure
