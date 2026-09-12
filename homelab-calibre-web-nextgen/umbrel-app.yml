@@ -2,7 +2,7 @@ manifestVersion: 1.1
 id: homelab-calibre-web-nextgen
 category: files
 name: Calibre-Web NextGen
-version: "4.0.153"
+version: "4.1.43"
 tagline: Browse, read and auto-import your eBook library
 icon: https://raw.githubusercontent.com/new-usemame/calibre-web-nextgen/main/cps/static/img/apple-touch-icon.png
 description: >-
