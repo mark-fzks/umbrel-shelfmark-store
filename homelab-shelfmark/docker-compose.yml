@@ -1,26 +1,35 @@
-version: '3.7'
+version: "3.7"
+
 services:
   app_proxy:
     environment:
       APP_HOST: homelab-shelfmark_server_1
       APP_PORT: 8084
-    container_name: homelab-shelfmark_app_proxy_1
+
   server:
-    image: ghcr.io/calibrain/shelfmark:v1.3.15
-    container_name: homelab-shelfmark_server_1
+    image: ghcr.io/calibrain/shelfmark:v1.3.15@sha256:9602290324993c801b319d3166b202b96bd9039af2416f0916dae03a5bdca815
     environment:
-      PUID: 1000
-      PGID: 1000
-      TZ: UTC
-      SEARCH_MODE: universal
-      PROWLARR_ENABLED: "true"
-      PROWLARR_URL: http://prowlarr_server_1:9696
-      PROWLARR_TORRENT_CLIENT: transmission
-      TRANSMISSION_URL: http://transmission_server_1:9091
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Budapest
+      - SEARCH_MODE=universal
+      # Reuse Calibre-Web NextGen's user accounts instead of a separate login.
+      - AUTH_METHOD=cwa
+      - CWA_DB_PATH=/auth/cw-config/app.db
+      # Umbrel serves apps over plain HTTP on the LAN; a Secure cookie would
+      # never be sent back by the browser and login would silently fail.
+      - SESSION_COOKIE_SECURE=false
+      # Browser-facing redirect target, so it must be reachable from your
+      # machine — not an internal container name.
+      - CALIBRE_WEB_URL=http://umbrel.local:8083
+      - PROWLARR_ENABLED=true
+      - PROWLARR_URL=http://prowlarr_server_1:9696
+      - PROWLARR_TORRENT_CLIENT=transmission
+      - TRANSMISSION_URL=http://transmission_server_1:9091
     volumes:
       - ${APP_DATA_DIR}/data/config:/config
-      - ${APP_DATA_DIR}/data/books:/books
-      # Must match Transmission's own download path exactly so Shelfmark can
-      # see and import finished torrents.
-      - ${UMBREL_ROOT}/home/Downloads:/downloads
+      - ${UMBREL_ROOT}/app-data/homelab-calibre-web-nextgen/data/config:/auth/cw-config:ro
+      # Downloads land in CWA's ingest folder so they are imported automatically.
+      - ${UMBREL_ROOT}/app-data/homelab-calibre-web-nextgen/data/ingest:/books
+      - ${UMBREL_ROOT}/data/storage/downloads:/downloads
     restart: on-failure

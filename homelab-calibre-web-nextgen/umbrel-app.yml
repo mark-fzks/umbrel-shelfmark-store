@@ -1,0 +1,38 @@
+manifestVersion: 1.1
+id: homelab-calibre-web-nextgen
+category: files
+name: Calibre-Web NextGen
+version: "4.0.153"
+tagline: Browse, read and auto-import your eBook library
+icon: https://raw.githubusercontent.com/new-usemame/calibre-web-nextgen/main/README_images/CWA-logo-round-dark.svg
+description: >-
+  Calibre-Web NextGen is a modern fork of Calibre-Web Automated: a clean web
+  interface for browsing, reading and managing a Calibre eBook library, with
+  automatic ingestion of new books dropped into a watched folder.
+
+
+  It pairs with Shelfmark from this same app store. Shelfmark writes the books it
+  downloads straight into this app's ingest folder, and Calibre-Web NextGen picks
+  them up, converts them if needed, and files them into your library automatically.
+  Shelfmark also reuses this app's user accounts for its own login.
+
+
+  🛠️ AFTER INSTALLING
+
+  On the first run, open the app and create your admin account. Your library lives
+  at /calibre-library inside the container — if you are migrating an existing
+  Calibre library, copy it into this app's data folder before first launch.
+developer: new-usemame
+website: https://github.com/new-usemame/calibre-web-nextgen
+dependencies: []
+repo: https://github.com/new-usemame/calibre-web-nextgen
+support: https://github.com/new-usemame/calibre-web-nextgen/issues
+port: 8083
+gallery:
+  - https://raw.githubusercontent.com/new-usemame/calibre-web-nextgen/main/README_images/cwa-rebrand-ui.png
+path: ""
+defaultUsername: "admin"
+defaultPassword: "admin123"
+releaseNotes: ""
+submitter: mark-fzks
+submission: https://github.com/mark-fzks/umbrel-shelfmark-store

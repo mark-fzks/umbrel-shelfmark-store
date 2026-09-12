@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: homelab-calibre-web-nextgen_server_1
+      APP_PORT: 8083
+
+  server:
+    image: ghcr.io/new-usemame/calibre-web-nextgen:v4.0.153@sha256:073c6ceb5b552c3429802eb284059f27ace6683f062c426f189166eb830d8b95
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Budapest
+      - CWA_PORT_OVERRIDE=8083
+      - NETWORK_SHARE_MODE=false
+      # Only umbrelOS's own app_proxy sits in front of this container.
+      - TRUSTED_PROXY_COUNT=1
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/config
+      - ${APP_DATA_DIR}/data/library:/calibre-library
+      # Shelfmark writes finished books here, which CWA auto-imports.
+      - ${APP_DATA_DIR}/data/ingest:/cwa-book-ingest
+    restart: on-failure
