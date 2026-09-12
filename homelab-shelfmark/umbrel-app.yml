@@ -23,7 +23,11 @@ description: >-
 
   Open Shelfmark and go to Settings to paste in your Prowlarr API key (find it in
   Prowlarr under Settings > General > Security). The Prowlarr and Transmission URLs
-  are already filled in. Log in with the account you created in Calibre-Web NextGen.
+  are already filled in.
+
+
+  Shelfmark has no login of its own — it signs you in with your Calibre-Web NextGen
+  account, so use admin / admin123 unless you have already changed that password.
 developer: calibrain
 website: https://github.com/calibrain/shelfmark
 dependencies:
@@ -39,8 +43,8 @@ gallery:
   - https://raw.githubusercontent.com/calibrain/shelfmark/main/README_images/downloads.png
   - https://raw.githubusercontent.com/calibrain/shelfmark/main/README_images/multi-source.png
 path: ""
-defaultUsername: ""
-defaultPassword: ""
+defaultUsername: "Your Calibre-Web NextGen username"
+defaultPassword: "Your Calibre-Web NextGen password"
 releaseNotes: ""
 permissions:
   - STORAGE_DOWNLOADS

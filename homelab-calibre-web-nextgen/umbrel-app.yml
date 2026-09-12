@@ -19,9 +19,10 @@ description: >-
 
   🛠️ AFTER INSTALLING
 
-  On the first run, open the app and create your admin account. Your library lives
-  at /calibre-library inside the container — if you are migrating an existing
-  Calibre library, copy it into this app's data folder before first launch.
+  Log in with admin / admin123, then change the password straight away under
+  Profile > Account. To fetch metadata and covers, enable uploads under
+  Admin > Basic Configuration. If you are migrating an existing Calibre library,
+  copy it into this app's data folder before first launch.
 developer: new-usemame
 website: https://github.com/new-usemame/calibre-web-nextgen
 dependencies: []
