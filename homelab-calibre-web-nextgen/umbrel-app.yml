@@ -4,7 +4,7 @@ category: files
 name: Calibre-Web NextGen
 version: "4.0.153"
 tagline: Browse, read and auto-import your eBook library
-icon: https://raw.githubusercontent.com/new-usemame/calibre-web-nextgen/main/README_images/CWA-logo-round-dark.svg
+icon: https://raw.githubusercontent.com/new-usemame/calibre-web-nextgen/main/cps/static/img/apple-touch-icon.png
 description: >-
   Calibre-Web NextGen is a modern fork of Calibre-Web Automated: a clean web
   interface for browsing, reading and managing a Calibre eBook library, with
@@ -30,7 +30,8 @@ repo: https://github.com/new-usemame/calibre-web-nextgen
 support: https://github.com/new-usemame/calibre-web-nextgen/issues
 port: 8083
 gallery:
-  - https://raw.githubusercontent.com/new-usemame/calibre-web-nextgen/main/README_images/cwa-rebrand-ui.png
+  - https://raw.githubusercontent.com/new-usemame/calibre-web-nextgen/main/README_images/new-book-details-page.png
+  - https://raw.githubusercontent.com/new-usemame/calibre-web-nextgen/main/README_images/new-book-list.png
 path: ""
 defaultUsername: "admin"
 defaultPassword: "admin123"
