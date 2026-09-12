@@ -31,5 +31,7 @@ services:
       - ${UMBREL_ROOT}/app-data/homelab-calibre-web-nextgen/data/config:/auth/cw-config:ro
       # Downloads land in CWA's ingest folder so they are imported automatically.
       - ${UMBREL_ROOT}/app-data/homelab-calibre-web-nextgen/data/ingest:/books
-      - ${UMBREL_ROOT}/data/storage/downloads:/downloads
+      # This umbrelOS uses the Files-app layout; verified against the installed
+      # composes for Transmission and Prowlarr, which both mount this path.
+      - ${UMBREL_ROOT}/home/Downloads:/downloads
     restart: on-failure
